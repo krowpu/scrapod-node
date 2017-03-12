@@ -1,5 +1,7 @@
 DEPENDENCIES
   xvfb
+    git: https://github.com/krowpu/chef-xvfb.git
+    revision: 8a0c5de9e8644dbded5fdf97715b582a0b64182a
 
 GRAPH
   xvfb (3.0.0)
