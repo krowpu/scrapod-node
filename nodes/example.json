@@ -3,6 +3,7 @@
     "ipaddress": "0.0.0.0"
   },
   "deploy_user": "ubuntu",
+  "deploy_group": "ubuntu",
   "run_list": [
     "recipe[xvfb]",
     "recipe[bundler]",
