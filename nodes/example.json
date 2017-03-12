@@ -1,0 +1,7 @@
+{
+  "automatic": {
+    "ipaddress": "0.0.0.0"
+  },
+  "run_list": [
+  ]
+}
