@@ -1,0 +1,5 @@
+DEPENDENCIES
+  xvfb
+
+GRAPH
+  xvfb (3.0.0)
