@@ -1,4 +1,4 @@
-name 'scrapod-deploy'
+name 'deploy'
 description 'Create deployment directory'
 license 'MIT'
 
