@@ -5,7 +5,8 @@
   "run_list": [
     "recipe[dist-upgrade]",
     "recipe[xvfb]",
-    "recipe[bundler]"
+    "recipe[bundler]",
+    "recipe[scrapod-deploy]"
   ],
   "xvfb": {
     "display": ":1",
