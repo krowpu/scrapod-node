@@ -38,3 +38,6 @@ bower.json
 
 # Ignore Capistrano server configurations.
 /config/deploy/
+
+# Ignore vendor cookbooks.
+/cookbooks/
