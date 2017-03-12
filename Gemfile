@@ -5,6 +5,9 @@ group :development do
   # on multiple remote machines, via SSH.
   gem 'capistrano'
 
+  # Opens SSH shell on remote host in current release directory.
+  gem 'capistrano-shell'
+
   # Handles bootstrapping, running chef solo, rsyncing cookbooks etc.
   gem 'knife-solo'
 
