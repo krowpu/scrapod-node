@@ -5,7 +5,8 @@
   "run_list": [
     "recipe[xvfb]",
     "recipe[bundler]",
-    "recipe[scrapod-deploy]"
+    "recipe[scrapod-deploy]",
+    "recipe[qt5-webkit-dev]"
   ],
   "xvfb": {
     "display": ":1",
