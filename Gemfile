@@ -7,4 +7,7 @@ group :development do
 
   # Handles bootstrapping, running chef solo, rsyncing cookbooks etc.
   gem 'knife-solo'
+
+  # Manages a Cookbook's, or an Application's, Cookbook dependencies.
+  gem 'berkshelf'
 end
