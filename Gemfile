@@ -1,5 +1,12 @@
 source 'https://rubygems.org'
 
+git_source :krowpu do |repo_name|
+  "https://github.com/krowpu/#{repo_name}.git"
+end
+
+# Long-living Capybara Webkit process for web scraping.
+gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
+
 group :development do
   # Capistrano is a utility and framework for executing commands in parallel
   # on multiple remote machines, via SSH.
