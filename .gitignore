@@ -35,3 +35,6 @@ bower.json
 
 # Ignore deployment secret keys.
 /keys/
+
+# Ignore Capistrano server configurations.
+/config/deploy/
