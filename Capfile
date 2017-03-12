@@ -9,6 +9,7 @@ require 'capistrano/scm/git'
 install_plugin Capistrano::SCM::Git
 
 # Include tasks from other gems included in your Gemfile
+require 'capistrano/bundler'
 require 'capistrano/shell'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

@@ -5,6 +5,9 @@ group :development do
   # on multiple remote machines, via SSH.
   gem 'capistrano'
 
+  # Bundler support for Capistrano 3.x.
+  gem 'capistrano-bundler'
+
   # Opens SSH shell on remote host in current release directory.
   gem 'capistrano-shell'
 

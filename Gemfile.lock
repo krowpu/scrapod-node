@@ -39,6 +39,9 @@ GEM
       i18n
       rake (>= 10.0.0)
       sshkit (>= 1.9.0)
+    capistrano-bundler (1.2.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
     capistrano-shell (0.2.0)
       capistrano (~> 3.1)
     celluloid (0.16.0)
@@ -227,6 +230,7 @@ PLATFORMS
 DEPENDENCIES
   berkshelf
   capistrano
+  capistrano-bundler
   capistrano-shell
   knife-solo
 
