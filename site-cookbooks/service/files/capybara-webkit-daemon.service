@@ -1,0 +1,24 @@
+[Unit]
+
+Description=Capybara Webkit daemon
+
+After=network.target
+Requires=xvfb.service
+
+
+
+[Service]
+
+Type=simple
+Restart=always
+
+User=ubuntu
+Group=ubuntu
+
+WorkingDirectory=/srv/scrapod/current/
+PIDFile=/srv/scrapod/shared/tmp/pids/capybara.pid
+
+Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
+
+ExecStart=/usr/bin/bundle exec --keep-file-descriptors capybara-webkit-daemon --debug
+ExecStop=/bin/kill `cat /srv/scrapod/shared/tmp/pids/capybara.pid`
