@@ -18,8 +18,8 @@ directory '/srv/scrapod/shared/tmp/pids' do
   mode '0755' # drwxr-xr-x
 end
 
-cookbook_file '/etc/systemd/system/capybara-webkit-daemon.service' do
-  source 'capybara-webkit-daemon.service'
+template '/etc/systemd/system/capybara-webkit-daemon.service' do
+  source 'capybara-webkit-daemon.service.erb'
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
