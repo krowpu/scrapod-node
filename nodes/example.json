@@ -4,6 +4,7 @@
   },
   "deploy_user": "ubuntu",
   "deploy_group": "ubuntu",
+  "display": ":1",
   "run_list": [
     "recipe[xvfb]",
     "recipe[bundler]",
