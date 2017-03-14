@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/krowpu/capybara-webkit-daemon.git
-  revision: 231f5d62a87a2a1220638a76d7443f78c2fc33a9
+  revision: 0157194743347a9a837b5d963af22cb7b3b8e2d1
   specs:
     capybara-webkit-daemon (0.0.0)
       capybara (= 2.4.4)
