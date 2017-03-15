@@ -8,8 +8,8 @@ template 'capybara-webkit-daemon.service' do
   mode '0644' # -rw-r--r--
 
   variables(
-    user: node['deploy']['user'],
-    group: node['deploy']['group'],
+    user:    node['deploy']['user'],
+    group:   node['deploy']['group'],
     display: node['xvfb']['display'],
   )
 end
