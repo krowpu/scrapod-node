@@ -4,17 +4,16 @@
   },
   "run_list": [
     "recipe[xvfb]",
-    "recipe[deploy]",
-    "recipe[service]"
+    "recipe[deploy]"
   ],
+  "deploy": {
+    "user": "ubuntu",
+    "group": "ubuntu"
+  },
   "xvfb": {
     "user": "xvfb",
     "display": ":1",
     "screennum": "0",
     "dimensions": "1024x768x16"
-  },
-  "deploy": {
-    "user": "ubuntu",
-    "group": "ubuntu"
   }
 }
