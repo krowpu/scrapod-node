@@ -8,7 +8,6 @@
   "run_list": [
     "recipe[xvfb]",
     "recipe[deploy]",
-    "recipe[gem-capybara-webkit-deps]",
     "recipe[service]"
   ],
   "xvfb": {
