@@ -21,9 +21,9 @@ PIDFile=/srv/scrapod/shared/tmp/pids/capybara.pid
 Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
 
 <% if @display.nil? %>
-ExecStart=/usr/bin/bundle exec --keep-file-descriptors capybara-webkit-daemon --debug
+ExecStart=/usr/bin/bundle exec --keep-file-descriptors capybara-webkit-daemon --debug --logfile /srv/scrapod/shared/log/capybara.log
 <% else %>
-ExecStart=/usr/bin/bundle exec --keep-file-descriptors capybara-webkit-daemon --debug --display <%= @display %>
+ExecStart=/usr/bin/bundle exec --keep-file-descriptors capybara-webkit-daemon --debug --logfile /srv/scrapod/shared/log/capybara.log --display <%= @display %>
 <% end %>
 
 ExecStop=/bin/kill `cat /srv/scrapod/shared/tmp/pids/capybara.pid`
