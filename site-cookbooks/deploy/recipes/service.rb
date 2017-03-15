@@ -1,6 +1,7 @@
 include_recipe 'deploy::directories'
 
-template '/etc/systemd/system/capybara-webkit-daemon.service' do
+template 'capybara-webkit-daemon.service' do
+  path '/etc/systemd/system/capybara-webkit-daemon.service'
   source 'capybara-webkit-daemon.service.erb'
   owner 'root'
   group 'root'
@@ -15,5 +16,5 @@ end
 
 execute 'systemctl daemon-reload' do
   action :nothing
-  subscribes :run, 'template[/etc/systemd/system/capybara-webkit-daemon.service]', :immediately
+  subscribes :run, 'template[capybara-webkit-daemon.service]', :immediately
 end
