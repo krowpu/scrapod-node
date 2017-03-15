@@ -7,7 +7,6 @@
   "display": ":1",
   "run_list": [
     "recipe[xvfb]",
-    "recipe[bundler]",
     "recipe[deploy]",
     "recipe[gem-capybara-webkit-deps]",
     "recipe[service]"
