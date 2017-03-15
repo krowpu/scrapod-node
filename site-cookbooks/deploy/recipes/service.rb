@@ -11,10 +11,9 @@ template '/etc/systemd/system/capybara-webkit-daemon.service' do
     group: node['deploy']['group'],
     display: node['xvfb']['display'],
   )
-
-  notifies :run, 'execute[systemctl daemon-reload]', :immediately
 end
 
 execute 'systemctl daemon-reload' do
   action :nothing
+  subscribes :run, 'template[/etc/systemd/system/capybara-webkit-daemon.service]', :immediately
 end
