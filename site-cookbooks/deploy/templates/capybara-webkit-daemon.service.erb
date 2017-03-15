@@ -12,8 +12,8 @@ Requires=xvfb.service
 Type=simple
 Restart=always
 
-User=ubuntu
-Group=ubuntu
+User=<%= @user %>
+Group=<%= @group %>
 
 WorkingDirectory=/srv/scrapod/current/
 PIDFile=/srv/scrapod/shared/tmp/pids/capybara.pid

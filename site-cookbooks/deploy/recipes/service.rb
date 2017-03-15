@@ -7,7 +7,9 @@ template '/etc/systemd/system/capybara-webkit-daemon.service' do
   mode '0644' # -rw-r--r--
 
   variables(
-    display: node['display'],
+    user: node['deploy']['user'],
+    group: node['deploy']['group'],
+    display: node['xvfb']['display'],
   )
 
   notifies :run, 'execute[systemctl daemon-reload]', :immediately

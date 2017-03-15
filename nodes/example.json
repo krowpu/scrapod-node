@@ -2,7 +2,6 @@
   "automatic": {
     "ipaddress": "0.0.0.0"
   },
-  "display": ":1",
   "run_list": [
     "recipe[xvfb]",
     "recipe[deploy]",
