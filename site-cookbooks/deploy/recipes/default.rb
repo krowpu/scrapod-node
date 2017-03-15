@@ -10,3 +10,4 @@ package 'gstreamer1.0-tools'
 package 'gstreamer1.0-x'
 
 include_recipe 'deploy::directories'
+include_recipe 'deploy::service'

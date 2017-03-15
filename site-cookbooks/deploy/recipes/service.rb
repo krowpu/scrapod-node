@@ -1,4 +1,4 @@
-include_recipe 'deploy'
+include_recipe 'deploy::directories'
 
 template '/etc/systemd/system/capybara-webkit-daemon.service' do
   source 'capybara-webkit-daemon.service.erb'
