@@ -1,4 +1,4 @@
-include_recipe 'dist-update'
+execute 'apt-get update'
 
 package 'ruby-full'
 package 'bundler'
