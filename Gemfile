@@ -19,17 +19,17 @@ group :development do
 
   # Capistrano is a utility and framework for executing commands in parallel
   # on multiple remote machines, via SSH.
-  gem 'capistrano'
+  gem 'capistrano', require: false
 
   # Bundler support for Capistrano 3.x.
-  gem 'capistrano-bundler'
+  gem 'capistrano-bundler', require: false
 
   # Opens SSH shell on remote host in current release directory.
-  gem 'capistrano-shell'
+  gem 'capistrano-shell', require: false
 
   # Handles bootstrapping, running chef solo, rsyncing cookbooks etc.
-  gem 'knife-solo'
+  gem 'knife-solo', require: false
 
   # Manages a Cookbook's, or an Application's, Cookbook dependencies.
-  gem 'berkshelf'
+  gem 'berkshelf', require: false
 end
