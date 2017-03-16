@@ -159,13 +159,14 @@
 ## usage. Each test specifies a resource, conditions and the action to be
 ## performed should a test fail.
 #
-   check system scrapod
+#  check system $HOST
 #    if loadavg (1min) > 4 then alert
 #    if loadavg (5min) > 2 then alert
 #    if cpu usage > 95% for 10 cycles then alert
 #    if memory usage > 75% then alert
 #    if swap usage > 25% then alert
 #
+   check system scrapod
 #    
 ## Check if a file exists, checksum, permissions, uid and gid. In addition
 ## to alert recipients in the global section, customized alert can be sent to 
@@ -215,7 +216,7 @@
 ## stop may be cascaded to them before the filesystem will become full and data
 ## lost.
 #
-   check filesystem root with path /
+#  check filesystem root with path /
 #    start program  = "/bin/mount /data"
 #    stop program  = "/bin/umount /data"
 #    if failed permission 660 then unmonitor
@@ -227,6 +228,7 @@
 #    if inode usage > 99% then stop
 #    group server
 #
+   check filesystem root with path /
 #
 ## Check a file's timestamp. In this example, we test if a file is older 
 ## than 15 minutes and assume something is wrong if its not updated. Also,
