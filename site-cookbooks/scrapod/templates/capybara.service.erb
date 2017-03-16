@@ -28,4 +28,8 @@ ExecStart=<%= bundle %> capybara-webkit-daemon --debug --logfile /srv/scrapod/sh
 ExecStart=<%= bundle %> capybara-webkit-daemon --debug --logfile /srv/scrapod/shared/log/capybara.log --pidfile /srv/scrapod/shared/tmp/pids/capybara.pid --display <%= @display %>
 <% end %>
 
-ExecStop=/bin/kill `cat /srv/scrapod/shared/tmp/pids/capybara.pid`
+
+
+[Install]
+
+WantedBy=multi-user.target
