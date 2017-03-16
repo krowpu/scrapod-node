@@ -6,6 +6,9 @@ git_source :krowpu do |repo_name|
   "https://github.com/krowpu/#{repo_name}.git"
 end
 
+# A ruby web server built for concurrency.
+gem 'puma'
+
 # Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort.
 gem 'sinatra', '>= 2.0.0.rc1', '< 3.0'
 
@@ -14,11 +17,6 @@ gem 'sinatra-contrib', '>= 2.0.0.rc1', '< 3.0'
 
 # Long-living Capybara Webkit process for web scraping.
 gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
-
-group :production do
-  # A ruby web server built for concurrency.
-  gem 'puma'
-end
 
 group :development do
   # A make-like build utility for Ruby.
