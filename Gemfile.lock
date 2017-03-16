@@ -274,6 +274,7 @@ DEPENDENCIES
   capistrano-shell
   capybara-webkit-daemon!
   knife-solo
+  rake
   rubocop
 
 BUNDLED WITH

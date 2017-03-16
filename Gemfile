@@ -10,6 +10,9 @@ end
 gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
 
 group :development do
+  # A make-like build utility for Ruby.
+  gem 'rake', require: false
+
   # Automatic Ruby code style checking tool.
   # Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop', require: false
