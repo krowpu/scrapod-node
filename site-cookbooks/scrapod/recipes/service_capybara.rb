@@ -2,7 +2,7 @@ include_recipe 'scrapod::directories'
 
 template 'capybara-webkit-daemon.service' do
   path '/etc/systemd/system/capybara-webkit-daemon.service'
-  source 'capybara-webkit-daemon.service.erb'
+  source 'capybara.service.erb'
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
