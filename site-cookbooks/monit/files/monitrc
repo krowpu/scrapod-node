@@ -215,7 +215,7 @@
 ## stop may be cascaded to them before the filesystem will become full and data
 ## lost.
 #
-#  check filesystem datafs with path /dev/sdb1
+   check filesystem root with path /
 #    start program  = "/bin/mount /data"
 #    stop program  = "/bin/umount /data"
 #    if failed permission 660 then unmonitor
