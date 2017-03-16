@@ -4,7 +4,8 @@
   },
   "run_list": [
     "recipe[xvfb]",
-    "recipe[scrapod]"
+    "recipe[scrapod]",
+    "recipe[www]"
   ],
   "xvfb": {
     "user": "xvfb",
