@@ -40,13 +40,13 @@ end
 service 'monit' do
   action :nothing
 
-  subscribes :restart, 'cookbook_file[/etc/monit/monitrc]', :immediately
+  subscribes :restart, 'cookbook_file[/etc/monit/monitrc]'
 
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/system]', :immediately
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/rootfs]', :immediately
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/system]'
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/rootfs]'
 
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/system]', :immediately
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/rootfs]', :immediately
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/system]'
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/rootfs]'
 end
 
 cookbook_file '/etc/nginx/snippets/monit.conf' do
@@ -58,5 +58,5 @@ end
 
 service 'nginx' do
   action :nothing
-  subscribes :restart, 'cookbook_file[/etc/nginx/snippets/monit.conf]', :immediately
+  subscribes :restart, 'cookbook_file[/etc/nginx/snippets/monit.conf]'
 end

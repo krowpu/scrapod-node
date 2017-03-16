@@ -35,6 +35,6 @@ end
 
 service 'nginx' do
   action :nothing
-  subscribes :restart, 'cookbook_file[/etc/nginx/sites-available/default]', :immediately
-  subscribes :restart, 'link[/etc/nginx/sites-enabled/default]',            :immediately
+  subscribes :restart, 'cookbook_file[/etc/nginx/sites-available/default]'
+  subscribes :restart, 'link[/etc/nginx/sites-enabled/default]'
 end

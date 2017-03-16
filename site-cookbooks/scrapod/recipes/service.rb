@@ -16,5 +16,5 @@ end
 
 execute 'systemctl daemon-reload' do
   action :nothing
-  subscribes :run, 'template[capybara-webkit-daemon.service]', :immediately
+  subscribes :run, 'template[capybara-webkit-daemon.service]'
 end
