@@ -1,7 +1,7 @@
 include_recipe 'scrapod::directories'
 
-template 'capybara-webkit-daemon.service' do
-  path '/etc/systemd/system/capybara-webkit-daemon.service'
+template 'capybara.service' do
+  path '/etc/systemd/system/scrapod-capybara.service'
   source 'capybara.service.erb'
   owner 'root'
   group 'root'
@@ -16,5 +16,5 @@ end
 
 execute 'systemctl daemon-reload' do
   action :nothing
-  subscribes :run, 'template[capybara-webkit-daemon.service]'
+  subscribes :run, 'template[capybara.service]'
 end
