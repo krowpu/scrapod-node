@@ -6,10 +6,6 @@
     "recipe[xvfb]",
     "recipe[deploy]"
   ],
-  "deploy": {
-    "user": "ubuntu",
-    "group": "ubuntu"
-  },
   "xvfb": {
     "user": "xvfb",
     "display": ":1",
