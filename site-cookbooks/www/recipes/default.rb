@@ -13,7 +13,7 @@ directory '/srv/www/html' do
   mode '0755' # drwxr-xr-x
 end
 
-cookbook_file '/etc/www/html/index.html' do
+cookbook_file '/srv/www/html/index.html' do
   source 'index.html'
   owner node['deploy']['user']
   group node['deploy']['group']
