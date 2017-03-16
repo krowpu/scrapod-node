@@ -166,7 +166,6 @@
 #    if memory usage > 75% then alert
 #    if swap usage > 25% then alert
 #
-   check system scrapod
 #    
 ## Check if a file exists, checksum, permissions, uid and gid. In addition
 ## to alert recipients in the global section, customized alert can be sent to 
@@ -228,7 +227,6 @@
 #    if inode usage > 99% then stop
 #    group server
 #
-   check filesystem root with path /
 #
 ## Check a file's timestamp. In this example, we test if a file is older 
 ## than 15 minutes and assume something is wrong if its not updated. Also,
