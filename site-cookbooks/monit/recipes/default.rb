@@ -1,6 +1,6 @@
-include_recipe 'nginx'
+include_recipe 'dist-update'
 
-execute 'apt-get update'
+include_recipe 'nginx'
 
 package 'monit'
 
