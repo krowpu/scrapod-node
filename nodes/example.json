@@ -4,7 +4,7 @@
   },
   "run_list": [
     "recipe[xvfb]",
-    "recipe[deploy]"
+    "recipe[scrapod]"
   ],
   "xvfb": {
     "user": "xvfb",

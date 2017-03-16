@@ -1,4 +1,4 @@
-include_recipe 'deploy::directories'
+include_recipe 'scrapod::directories'
 
 template 'capybara-webkit-daemon.service' do
   path '/etc/systemd/system/capybara-webkit-daemon.service'

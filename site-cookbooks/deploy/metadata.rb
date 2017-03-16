@@ -1,5 +1,5 @@
 name 'deploy'
-description 'Prepare for Scrapod deployment'
+description 'Deployment user'
 license 'MIT'
 
 platform 'ubuntu', '= 16.04'
