@@ -159,7 +159,7 @@
 ## usage. Each test specifies a resource, conditions and the action to be
 ## performed should a test fail.
 #
-#  check system $HOST
+   check system scrapod
 #    if loadavg (1min) > 4 then alert
 #    if loadavg (5min) > 2 then alert
 #    if cpu usage > 95% for 10 cycles then alert
