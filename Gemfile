@@ -6,6 +6,9 @@ git_source :krowpu do |repo_name|
   "https://github.com/krowpu/#{repo_name}.git"
 end
 
+# Sinatra is a DSL for quickly creating web applications in Ruby with minimal effort.
+gem 'sinatra', '>= 2.0.0.rc1', '< 3.0'
+
 # Long-living Capybara Webkit process for web scraping.
 gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
 
