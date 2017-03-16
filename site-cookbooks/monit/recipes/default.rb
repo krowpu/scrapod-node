@@ -37,6 +37,32 @@ link '/etc/monit/conf-enabled/rootfs' do
   group 'root'
 end
 
+cookbook_file '/etc/monit/conf-available/sshd' do
+  source 'sshd'
+  owner 'root'
+  group 'root'
+  mode '0644' # -rw-r--r--
+end
+
+link '/etc/monit/conf-enabled/sshd' do
+  to '/etc/monit/conf-available/sshd'
+  owner 'root'
+  group 'root'
+end
+
+cookbook_file '/etc/monit/conf-available/nginx' do
+  source 'nginx'
+  owner 'root'
+  group 'root'
+  mode '0644' # -rw-r--r--
+end
+
+link '/etc/monit/conf-enabled/nginx' do
+  to '/etc/monit/conf-available/nginx'
+  owner 'root'
+  group 'root'
+end
+
 service 'monit' do
   action :nothing
 
@@ -44,9 +70,13 @@ service 'monit' do
 
   subscribes :restart, 'cookbook_file[/etc/monit/conf-available/system]'
   subscribes :restart, 'cookbook_file[/etc/monit/conf-available/rootfs]'
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/sshd]'
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/nginx]'
 
   subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/system]'
   subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/rootfs]'
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/sshd]'
+  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/nginx]'
 end
 
 cookbook_file '/etc/nginx/snippets/monit.conf' do
