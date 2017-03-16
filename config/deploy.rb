@@ -37,5 +37,8 @@ append :linked_dirs, 'log', 'tmp/pids'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+after :deploy, 'puma:enable'
+after :deploy, 'puma:restart'
+
 after :deploy, 'capybara:enable'
 after :deploy, 'capybara:restart'
