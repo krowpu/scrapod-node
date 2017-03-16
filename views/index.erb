@@ -1,0 +1,7 @@
+<h2>Processes</h2>
+
+<ul>
+  <% `ps ax | grep capybara-webkit-daemon | grep -ve grep`.lines.each do |s| %>
+    <li><%= s %></li>
+  <% end %>
+</ul>
