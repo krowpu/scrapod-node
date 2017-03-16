@@ -1,0 +1,16 @@
+AllCops:
+  Exclude:
+    - cookbooks/**/*
+
+Metrics/LineLength:
+  Max: 120
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - site-cookbooks/**/*
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInLiteral:
+  EnforcedStyleForMultiline: comma

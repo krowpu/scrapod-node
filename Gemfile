@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source :krowpu do |repo_name|
@@ -8,6 +10,10 @@ end
 gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
 
 group :development do
+  # Automatic Ruby code style checking tool.
+  # Aims to enforce the community-driven Ruby Style Guide.
+  gem 'rubocop', require: false
+
   # Capistrano is a utility and framework for executing commands in parallel
   # on multiple remote machines, via SSH.
   gem 'capistrano'

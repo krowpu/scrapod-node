@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :capybara do
   task :enable do
     on roles :all do |_host|
