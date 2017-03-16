@@ -1,25 +1,18 @@
 <% bundle = '/usr/bin/bundle exec --keep-file-descriptors' %>
 
 [Unit]
-
 Description=Capybara Webkit daemon
-
 After=network.target
 Requires=xvfb.service
 
-
-
 [Service]
-
 Type=simple
 Restart=always
-
 User=<%= @user %>
 Group=<%= @group %>
 
 WorkingDirectory=/srv/scrapod/current/
 PIDFile=/srv/scrapod/shared/tmp/pids/capybara.pid
-
 Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
 
 <% if @display.nil? %>
@@ -28,8 +21,5 @@ ExecStart=<%= bundle %> capybara-webkit-daemon --debug --logfile /srv/scrapod/sh
 ExecStart=<%= bundle %> capybara-webkit-daemon --debug --logfile /srv/scrapod/shared/log/capybara.log --pidfile /srv/scrapod/shared/tmp/pids/capybara.pid --display <%= @display %>
 <% end %>
 
-
-
 [Install]
-
 WantedBy=multi-user.target
