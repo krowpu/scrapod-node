@@ -180,6 +180,7 @@ GEM
     powerpack (0.1.1)
     proxifier (1.0.3)
     public_suffix (2.0.5)
+    puma (3.8.2)
     rack (2.0.1)
     rack-protection (2.0.0.rc1)
       rack
@@ -283,6 +284,7 @@ DEPENDENCIES
   capistrano-shell
   capybara-webkit-daemon!
   knife-solo
+  puma
   rake
   rubocop
   sinatra (>= 2.0.0.rc1, < 3.0)
