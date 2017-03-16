@@ -10,4 +10,6 @@ package 'gstreamer1.0-tools'
 package 'gstreamer1.0-x'
 
 include_recipe 'scrapod::directories'
+
+include_recipe 'scrapod::service_web'
 include_recipe 'scrapod::service'

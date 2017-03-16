@@ -1,0 +1,30 @@
+<% bundle = '/usr/bin/bundle exec --keep-file-descriptors' %>
+
+[Unit]
+
+Description=Scrapod web server
+
+After=network.target
+
+
+
+[Service]
+
+Type=simple
+Restart=always
+
+User=<%= @user %>
+Group=<%= @group %>
+
+WorkingDirectory=/srv/scrapod/current/
+PIDFile=/srv/scrapod/shared/tmp/pids/puma.pid
+
+Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
+
+ExecStart=<%= bundle %> puma --config /srv/scrapod/current/config/puma.rb
+
+
+
+[Install]
+
+WantedBy=multi-user.target
