@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-environment 'production'
-
 directory '/srv/scrapod/current/'
 
 bind 'unix:///srv/scrapod/shared/tmp/sockets/puma.sock'
