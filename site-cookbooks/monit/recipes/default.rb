@@ -9,6 +9,8 @@ cookbook_file '/etc/monit/monitrc' do
   owner 'root'
   group 'root'
   mode '0600' # -rw-------
+
+  notifies :restart, 'service[monit]'
 end
 
 cookbook_file '/etc/monit/conf-available/system' do
@@ -16,12 +18,16 @@ cookbook_file '/etc/monit/conf-available/system' do
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
+
+  notifies :restart, 'service[monit]'
 end
 
 link '/etc/monit/conf-enabled/system' do
   to '/etc/monit/conf-available/system'
   owner 'root'
   group 'root'
+
+  notifies :restart, 'service[monit]'
 end
 
 cookbook_file '/etc/monit/conf-available/rootfs' do
@@ -29,12 +35,16 @@ cookbook_file '/etc/monit/conf-available/rootfs' do
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
+
+  notifies :restart, 'service[monit]'
 end
 
 link '/etc/monit/conf-enabled/rootfs' do
   to '/etc/monit/conf-available/rootfs'
   owner 'root'
   group 'root'
+
+  notifies :restart, 'service[monit]'
 end
 
 cookbook_file '/etc/monit/conf-available/sshd' do
@@ -42,12 +52,16 @@ cookbook_file '/etc/monit/conf-available/sshd' do
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
+
+  notifies :restart, 'service[monit]'
 end
 
 link '/etc/monit/conf-enabled/sshd' do
   to '/etc/monit/conf-available/sshd'
   owner 'root'
   group 'root'
+
+  notifies :restart, 'service[monit]'
 end
 
 cookbook_file '/etc/monit/conf-available/nginx' do
@@ -55,28 +69,20 @@ cookbook_file '/etc/monit/conf-available/nginx' do
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
+
+  notifies :restart, 'service[monit]'
 end
 
 link '/etc/monit/conf-enabled/nginx' do
   to '/etc/monit/conf-available/nginx'
   owner 'root'
   group 'root'
+
+  notifies :restart, 'service[monit]'
 end
 
 service 'monit' do
   action :nothing
-
-  subscribes :restart, 'cookbook_file[/etc/monit/monitrc]'
-
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/system]'
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/rootfs]'
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/sshd]'
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-available/nginx]'
-
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/system]'
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/rootfs]'
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/sshd]'
-  subscribes :restart, 'cookbook_file[/etc/monit/conf-enabled/nginx]'
 end
 
 cookbook_file '/etc/nginx/snippets/monit.conf' do
