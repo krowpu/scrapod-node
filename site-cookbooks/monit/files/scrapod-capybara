@@ -1,0 +1,1 @@
+check process scrapod-capybara with pidfile /srv/scrapod/shared/tmp/pids/capybara.pid
