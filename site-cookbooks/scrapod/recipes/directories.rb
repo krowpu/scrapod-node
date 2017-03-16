@@ -27,3 +27,9 @@ directory '/srv/scrapod/shared/tmp/pids' do
   group node['deploy']['group']
   mode '0755' # drwxr-xr-x
 end
+
+directory '/srv/scrapod/shared/tmp/sockets' do
+  owner node['deploy']['user']
+  group node['deploy']['group']
+  mode '0755' # drwxr-xr-x
+end
