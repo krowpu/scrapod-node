@@ -14,7 +14,7 @@ WorkingDirectory=/srv/scrapod/current/
 PIDFile=/srv/scrapod/shared/tmp/pids/puma.pid
 Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
 
-ExecStart=<%= bundle %> puma --config /srv/scrapod/current/config/puma.rb
+ExecStart=<%= bundle %> puma --config /srv/scrapod/current/config/puma/production.rb
 
 [Install]
 WantedBy=multi-user.target
