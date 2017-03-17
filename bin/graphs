@@ -7,8 +7,7 @@ require 'scrapod/monit/status/system'
 
 require 'etc'
 
-CHECK_INTERVAL = 5 * 60 # 5 minutes
-DURATION       = 2 * 24 * 60 * 60 # 2 days
+DURATION = 2 * 24 * 60 * 60 # 2 days
 
 USER  = 'ubuntu'
 GROUP = 'ubuntu'
@@ -44,32 +43,28 @@ unless File.exist? ram_rrd_file
   f.chmod 0o644 # -rw-r--r--
 end
 
-loop do
-  system = Scrapod::Monit::Status::System.new 'scrapod'
+system = Scrapod::Monit::Status::System.new 'scrapod'
 
-  cpu_usage    = system.metric 'cpu'
-  memory_usage = system.metric 'memory usage'
+cpu_usage    = system.metric 'cpu'
+memory_usage = system.metric 'memory usage'
 
-  us = /(?<percent>\d+)(\.\d+)?%us/.match cpu_usage
-  sy = /(?<percent>\d+)(\.\d+)?%sy/.match cpu_usage
-  wa = /(?<percent>\d+)(\.\d+)?%wa/.match cpu_usage
-  m = /\[(?<percent>\d+)(\.\d+)?%\]/.match memory_usage
+us = /(?<percent>\d+)(\.\d+)?%us/.match cpu_usage
+sy = /(?<percent>\d+)(\.\d+)?%sy/.match cpu_usage
+wa = /(?<percent>\d+)(\.\d+)?%wa/.match cpu_usage
+m = /\[(?<percent>\d+)(\.\d+)?%\]/.match memory_usage
 
-  `rrdtool update #{cpu_rrd_file} N:#{m&.[](:us)} N:#{m&.[](:sy)} N:#{m&.[](:wa)}` if us || sy || wa
+`rrdtool update #{cpu_rrd_file} N:#{m&.[](:us)} N:#{m&.[](:sy)} N:#{m&.[](:wa)}` if us || sy || wa
 
-  `rrdtool update #{ram_rrd_file} N:#{m[:percent]}` if m
+`rrdtool update #{ram_rrd_file} N:#{m[:percent]}` if m
 
-  `rrdtool graph #{IMAGES_DIR}/cpu.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:us=#{cpu_rrd_file}:us:AVERAGE DEF:sy=#{cpu_rrd_file}:sy:AVERAGE DEF:wa=#{cpu_rrd_file}:wa:AVERAGE LINE1:us#ff0000:User LINE1:sy#00ff00:System LINE1:wa#0000ff:Wait`
+`rrdtool graph #{IMAGES_DIR}/cpu.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:us=#{cpu_rrd_file}:us:AVERAGE DEF:sy=#{cpu_rrd_file}:sy:AVERAGE DEF:wa=#{cpu_rrd_file}:wa:AVERAGE LINE1:us#ff0000:User LINE1:sy#00ff00:System LINE1:wa#0000ff:Wait`
 
-  `rrdtool graph #{IMAGES_DIR}/ram.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:ram=#{ram_rrd_file}:ram:AVERAGE LINE1:ram#ff0000:RAM`
+`rrdtool graph #{IMAGES_DIR}/ram.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:ram=#{ram_rrd_file}:ram:AVERAGE LINE1:ram#ff0000:RAM`
 
-  f = File.new "#{IMAGES_DIR}/cpu.png"
-  f.chown UID, GID
-  f.chmod 0o644 # -rw-r--r--
+f = File.new "#{IMAGES_DIR}/cpu.png"
+f.chown UID, GID
+f.chmod 0o644 # -rw-r--r--
 
-  f = File.new "#{IMAGES_DIR}/ram.png"
-  f.chown UID, GID
-  f.chmod 0o644 # -rw-r--r--
-
-  sleep CHECK_INTERVAL
-end
+f = File.new "#{IMAGES_DIR}/ram.png"
+f.chown UID, GID
+f.chmod 0o644 # -rw-r--r--
