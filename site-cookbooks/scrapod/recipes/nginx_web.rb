@@ -2,7 +2,7 @@ include_recipe 'nginx'
 include_recipe 'monit'
 
 cookbook_file '/etc/nginx/sites-available/www' do
-  source 'nginx.conf'
+  source 'nginx_web.conf'
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
