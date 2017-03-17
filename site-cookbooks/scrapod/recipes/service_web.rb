@@ -1,5 +1,5 @@
 include_recipe 'scrapod::directories'
-include_recipe 'scrapod::nginx'
+include_recipe 'scrapod::nginx_web'
 
 template 'web.service' do
   path '/etc/systemd/system/scrapod-web.service'
