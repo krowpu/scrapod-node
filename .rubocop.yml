@@ -9,6 +9,9 @@ Style/FrozenStringLiteralComment:
   Exclude:
     - site-cookbooks/**/*
 
+Style/GlobalVars:
+  Enabled: false
+
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
