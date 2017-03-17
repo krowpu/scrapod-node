@@ -16,9 +16,9 @@ PIDFile=/srv/scrapod/shared/tmp/pids/capybara.pid
 Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
 
 <% if @display.nil? %>
-ExecStart=<%= bundle %> capybara-webkit-daemon --debug --logfile /srv/scrapod/shared/log/capybara.log --pidfile /srv/scrapod/shared/tmp/pids/capybara.pid
+ExecStart=<%= bundle %> capybara-webkit-daemon --config /srv/scrapod/current/config/capybara_webkit_daemon/production.rb
 <% else %>
-ExecStart=<%= bundle %> capybara-webkit-daemon --debug --logfile /srv/scrapod/shared/log/capybara.log --pidfile /srv/scrapod/shared/tmp/pids/capybara.pid --display <%= @display %>
+ExecStart=<%= bundle %> capybara-webkit-daemon --config /srv/scrapod/current/config/capybara_webkit_daemon/production.rb --display <%= @display %>
 <% end %>
 
 [Install]
