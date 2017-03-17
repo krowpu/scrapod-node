@@ -22,12 +22,21 @@ module Scrapod
           check_response_service_title
         end
 
+        def metric(name)
+          name = name.strip + ' '
+          metric = metrics.find do |s|
+            s.start_with? name
+          end
+          return if metric.nil?
+          metric[name.length..-1].strip
+        end
+
         def header
           @header ||= lines.first
         end
 
         def metrics
-          @metrics ||= lines[service_title_line..-1].freeze
+          @metrics ||= lines[(service_title_line + 1)..-1].map(&:strip).freeze
         end
 
         def service_title_line
