@@ -1,0 +1,49 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift File.expand_path '../lib', File.dirname(__FILE__)
+
+require 'scrapod/monit/status/system'
+
+require 'etc'
+
+CHECK_INTERVAL = 5 * 60 # 5 minutes
+DURATION       = 2 * 24 * 60 * 60 # 2 days
+
+USER  = 'ubuntu'
+GROUP = 'ubuntu'
+
+UID = Etc.getpwnam(USER).uid
+GID = Etc.getgrnam(GROUP).gid
+
+SHARED_DIR = '/srv/scrapod/shared'
+
+RRD_FILE   = File.expand_path 'tmp/graphs.rrd', SHARED_DIR
+IMAGES_DIR = File.expand_path 'public/graphs',  SHARED_DIR
+
+raise 'Must run as root' unless Process.uid.zero?
+raise "Directory #{IMAGES_DIR} does not exist" unless File.directory? IMAGES_DIR
+
+unless File.exist? RRD_FILE
+  `rrdtool create #{RRD_FILE} --start N --step 300 DS:ram:GAUGE:600:0:100 RRA:AVERAGE:0.5:1:576`
+
+  f = File.new RRD_FILE
+  f.chown UID, GID
+  f.chmod 0o644 # -rw-r--r--
+end
+
+loop do
+  system = Scrapod::Monit::Status::System.new 'scrapod'
+  memory_usage = system.metric 'memory usage'
+  m = /\[(?<percent>\d+)(\.\d+)?%\]/.match memory_usage
+
+  `rrdtool update #{RRD_FILE} N:#{m[:percent]}` if m
+
+  `rrdtool graph #{IMAGES_DIR}/ram.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:ram=#{RRD_FILE}:ram:AVERAGE LINE1:ram#ff0000:RAM`
+
+  f = File.new "#{IMAGES_DIR}ram.png"
+  f.chown UID, GID
+  f.chmod 0o644 # -rw-r--r--
+
+  sleep CHECK_INTERVAL
+end
