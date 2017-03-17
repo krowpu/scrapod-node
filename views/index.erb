@@ -7,3 +7,11 @@
     <li><%= s %></li>
   <% end %>
 </ul>
+
+<h2>Webkit servers</h2>
+
+<ul>
+  <% `ps ax | grep webkit_server | grep -ve grep`.lines.each do |s| %>
+    <li><%= s %></li>
+  <% end %>
+</ul>
