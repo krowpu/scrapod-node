@@ -1,7 +1,6 @@
-include_recipe 'dist-update'
+include_recipe 'ruby-bundler'
 
-package 'ruby-full'
-package 'bundler'
+include_recipe 'dist-update'
 
 package 'qt5-default'
 package 'libqt5webkit5-dev'
