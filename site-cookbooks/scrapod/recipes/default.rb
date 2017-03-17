@@ -17,4 +17,5 @@ include_recipe 'scrapod::service_capybara'
 
 cron 'graphs' do
   command '/usr/bin/bundle exec /srv/scrapod/current/bin/graphs'
+  environment 'BUNDLE_GEMFILE' => '/srv/scrapod/current/Gemfile'
 end
