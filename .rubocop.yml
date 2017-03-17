@@ -18,6 +18,9 @@ Style/FrozenStringLiteralComment:
 Style/GlobalVars:
   Enabled: false
 
+Style/SpecialGlobalVars:
+  Enabled: false
+
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
 
