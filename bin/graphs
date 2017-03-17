@@ -59,7 +59,7 @@ sy = /(?<percent>\d+)(\.\d+)?%sy/.match cpu_usage
 wa = /(?<percent>\d+)(\.\d+)?%wa/.match cpu_usage
 m = /\[(?<percent>\d+)(\.\d+)?%\]/.match memory_usage
 
-`rrdtool update #{cpu_rrd_file} N:#{us&.[](:us)} N:#{sy&.[](:sy)} N:#{wa&.[](:wa)}` if us || sy || wa
+`rrdtool update #{cpu_rrd_file} N:#{us&.[](:percent)} N:#{sy&.[](:percent)} N:#{wa&.[](:percent)}` if us || sy || wa
 
 `rrdtool update #{ram_rrd_file} N:#{m[:percent]}` if m
 
