@@ -27,7 +27,7 @@ raise "Directory #{IMAGES_DIR} does not exist" unless File.directory? IMAGES_DIR
 cpu_rrd_file = File.join RRDS_DIR, 'cpu.rrd'
 
 unless File.exist? cpu_rrd_file
-  `rrdtool create #{cpu_rrd_file} --start N --step 300 DS:us:GAUGE:600:0:100 DS:sy:GAUGE:0:100 DS:wa:GAUGE:0:100 RRA:AVERAGE:0.5:1:576`
+  `rrdtool create #{cpu_rrd_file} --start N --step 300 DS:us:GAUGE:600:0:100 DS:sy:GAUGE:600:0:100 DS:wa:GAUGE:600:0:100 RRA:AVERAGE:0.5:1:576`
 
   f = File.new cpu_rrd_file
   f.chown UID, GID
