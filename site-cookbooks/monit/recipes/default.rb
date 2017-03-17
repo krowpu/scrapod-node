@@ -64,6 +64,23 @@ link '/etc/monit/conf-enabled/sshd' do
   notifies :restart, 'service[monit]'
 end
 
+cookbook_file '/etc/monit/conf-available/monit' do
+  source 'monit'
+  owner 'root'
+  group 'root'
+  mode '0644' # -rw-r--r--
+
+  notifies :restart, 'service[monit]'
+end
+
+link '/etc/monit/conf-enabled/monit' do
+  to '/etc/monit/conf-available/monit'
+  owner 'root'
+  group 'root'
+
+  notifies :restart, 'service[monit]'
+end
+
 cookbook_file '/etc/monit/conf-available/nginx' do
   source 'nginx'
   owner 'root'
