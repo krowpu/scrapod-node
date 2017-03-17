@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-config = $capybara_webkit_daemon_config
+self.debug = true
 
-config.debug = true
+self.pid_file = '/src/scrapod/shared/tmp/pids/capybara.pid'
 
-config.pid_file = '/src/scrapod/shared/tmp/pids/capybara.pid'
-
-config.log_file = '/srv/scrapod/shared/log/capybara.log'
+self.log_file = '/srv/scrapod/shared/log/capybara.log'
