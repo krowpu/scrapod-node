@@ -41,7 +41,7 @@ loop do
 
   `rrdtool graph #{IMAGES_DIR}/ram.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:ram=#{RRD_FILE}:ram:AVERAGE LINE1:ram#ff0000:RAM`
 
-  f = File.new "#{IMAGES_DIR}ram.png"
+  f = File.new "#{IMAGES_DIR}/ram.png"
   f.chown UID, GID
   f.chmod 0o644 # -rw-r--r--
 
