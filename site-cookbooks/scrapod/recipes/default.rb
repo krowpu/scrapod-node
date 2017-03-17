@@ -14,4 +14,7 @@ include_recipe 'scrapod::directories'
 
 include_recipe 'scrapod::service_web'
 include_recipe 'scrapod::service_capybara'
-include_recipe 'scrapod::service_graphs'
+
+cron 'graphs' do
+  command '/usr/bin/bundle exec /srv/scrapod/current/bin/graphs'
+end
