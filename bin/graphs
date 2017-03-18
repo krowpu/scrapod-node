@@ -38,10 +38,10 @@ def update_rrd(path, *cols)
   `rrdtool update #{path} N:#{cols.map { |col| col || 'U' }.join(':')}`
 end
 
-def graph_rrd(name, lower, upper, *args)
+def graph_rrd(name, title, lower, upper, *args)
   path = File.join IMAGES_DIR, "#{name}.png"
   start = Time.now.to_i - DURATION
-  `rrdtool graph #{path} -a PNG --start #{start} --end N --lower-limit #{lower} --upper-limit #{upper} #{args.join(' ')}`
+  `rrdtool graph #{path} -a PNG --title #{title} --start #{start} --end N --lower-limit #{lower} --upper-limit #{upper} #{args.join(' ')}`
   chown path
 end
 
@@ -89,6 +89,7 @@ update_rrd(
 
 graph_rrd(
   'cpu',
+  'CPU usage',
   0,
   100,
   'DEF:us=#{cpu_rrd_file}:us:AVERAGE',
@@ -100,6 +101,7 @@ graph_rrd(
 
 graph_rrd(
   'ram',
+  'Memory usage',
   0,
   100,
   'DEF:ram=#{ram_rrd_file}:ram:AVERAGE',
