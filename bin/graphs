@@ -41,7 +41,7 @@ end
 def graph_rrd(name, title, lower, upper, *args)
   path = File.join IMAGES_DIR, "#{name}.png"
   start = Time.now.to_i - DURATION
-  `rrdtool graph #{path} -a PNG --title #{title} --start #{start} --end N --lower-limit #{lower} --upper-limit #{upper} #{args.join(' ')}`
+  `rrdtool graph #{path} -a PNG --title "#{title}" --start #{start} --end N --lower-limit #{lower} --upper-limit #{upper} #{args.join(' ')}`
   chown path
 end
 
