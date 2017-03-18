@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/krowpu/scrapod-server.git
-  revision: 68eeb5e82144d1ed9bc9534fb46a268646caa255
+  revision: 1eed1ca77accbe4610a3673f74b2d1a244d419f4
   specs:
     capybara-webkit-daemon (0.0.0)
       capybara (= 2.4.4)
