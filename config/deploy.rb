@@ -7,7 +7,7 @@ lock '3.8.0'
 set :application, 'scrapod'
 
 # Application repository
-set :repo_url, 'git@github.com:krowpu/scrapod.git'
+set :repo_url, 'git@github.com:krowpu/scrapod-node.git'
 
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
