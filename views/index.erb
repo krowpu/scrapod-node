@@ -1,22 +1,6 @@
 <img src="/graphs/cpu.png" alt="CPU"/>
 <img src="/graphs/ram.png" alt="RAM"/>
 
-<h2>Processes</h2>
-
-<ul>
-  <% `ps ax | grep capybara-webkit-daemon | grep -ve grep`.lines.each do |s| %>
-    <li><%= s %></li>
-  <% end %>
-</ul>
-
-<h2>Webkit servers</h2>
-
-<ul>
-  <% `ps ax | grep webkit_server | grep -ve grep`.lines.each do |s| %>
-    <li><%= s %></li>
-  <% end %>
-</ul>
-
 <h2>Active sessions</h2>
 
 <ul>
