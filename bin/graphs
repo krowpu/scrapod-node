@@ -20,6 +20,13 @@ SHARED_DIR = '/srv/scrapod/shared'
 RRDS_DIR   = File.join SHARED_DIR, 'tmp/graphs'
 IMAGES_DIR = File.join SHARED_DIR, 'public/graphs'
 
+def chown(path)
+  f = File.new path
+  f.chown UID, GID
+  f.chmod 0o644 # -rw-r--r--
+rescue Errno::ENOENT # rubocop:disable Lint/HandleExceptions
+end
+
 raise 'Must run as root' unless Process.uid.zero?
 raise "Directory #{IMAGES_DIR} does not exist" unless File.directory? IMAGES_DIR
 
@@ -27,26 +34,14 @@ cpu_rrd_file = File.join RRDS_DIR, 'cpu.rrd'
 
 unless File.exist? cpu_rrd_file
   `rrdtool create #{cpu_rrd_file} --start N --step 300 DS:us:GAUGE:600:0:100 DS:sy:GAUGE:600:0:100 DS:wa:GAUGE:600:0:100 RRA:AVERAGE:0.5:1:576`
-
-  begin
-    f = File.new cpu_rrd_file
-    f.chown UID, GID
-    f.chmod 0o644 # -rw-r--r--
-  rescue Errno::ENOENT # rubocop:disable Lint/HandleExceptions
-  end
+  chown cpu_rrd_file
 end
 
 ram_rrd_file = File.join RRDS_DIR, 'ram.rrd'
 
 unless File.exist? ram_rrd_file
   `rrdtool create #{ram_rrd_file} --start N --step 300 DS:ram:GAUGE:600:0:100 RRA:AVERAGE:0.5:1:576`
-
-  begin
-    f = File.new ram_rrd_file
-    f.chown UID, GID
-    f.chmod 0o644 # -rw-r--r--
-  rescue Errno::ENOENT # rubocop:disable Lint/HandleExceptions
-  end
+  chown ram_rrd_file
 end
 
 system = Scrapod::Monit::Status::System.new 'scrapod'
@@ -67,16 +62,5 @@ m = /\[(?<percent>\d+)(\.\d+)?%\]/.match memory_usage
 
 `rrdtool graph #{IMAGES_DIR}/ram.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:ram=#{ram_rrd_file}:ram:AVERAGE LINE1:ram#ff0000:RAM`
 
-begin
-  f = File.new "#{IMAGES_DIR}/cpu.png"
-  f.chown UID, GID
-  f.chmod 0o644 # -rw-r--r--
-rescue Errno::ENOENT # rubocop:disable Lint/HandleExceptions
-end
-
-begin
-  f = File.new "#{IMAGES_DIR}/ram.png"
-  f.chown UID, GID
-  f.chmod 0o644 # -rw-r--r--
-rescue Errno::ENOENT # rubocop:disable Lint/HandleExceptions
-end
+chown "#{IMAGES_DIR}/cpu.png"
+chown "#{IMAGES_DIR}/ram.png"
