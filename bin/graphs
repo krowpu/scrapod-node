@@ -39,7 +39,7 @@ def update_rrd(path, *cols)
 end
 
 def graph_rrd(name, lower, upper, *args)
-  path = IMAGES_DIR, "#{name}.png"
+  path = File.join IMAGES_DIR, "#{name}.png"
   start = Time.now.to_i - DURATION
   `rrdtool graph #{path} -a PNG --start #{start} --end N --lower-limit #{lower} --upper-limit #{upper} #{args.join(' ')}`
   chown path
