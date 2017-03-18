@@ -3,8 +3,19 @@
 
 <h2>Active sessions</h2>
 
-<ul>
-  <% sessions.each do |session| %>
-    <li><%= session[:id] %>: started at <%= session[:started_at] %></li>
-  <% end %>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Started at</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% sessions.each do |session| %>
+      <tr>
+        <td><%= session[:id] %></td>
+        <td><%= session[:started_at] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
