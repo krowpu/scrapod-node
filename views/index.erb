@@ -16,3 +16,11 @@
     <li><%= s %></li>
   <% end %>
 </ul>
+
+<h2>Active sessions</h2>
+
+<ul>
+  <% sessions.each do |session| %>
+    <li><%= session[:id] %>: started at <%= session[:started_at] %></li>
+  <% end %>
+</ul>
