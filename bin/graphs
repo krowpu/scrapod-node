@@ -34,6 +34,10 @@ def create_rrd(path, *args)
   chown path
 end
 
+def update_rrd(path, *cols)
+  `rrdtool update #{path} N:#{cols.map { |col| col || 'U' }.join(':')}`
+end
+
 raise 'Must run as root' unless Process.uid.zero?
 raise "Directory #{IMAGES_DIR} does not exist" unless File.directory? IMAGES_DIR
 
@@ -64,9 +68,17 @@ sy = /(?<percent>\d+)(\.\d+)?%sy/.match cpu_usage
 wa = /(?<percent>\d+)(\.\d+)?%wa/.match cpu_usage
 m = /\[(?<percent>\d+)(\.\d+)?%\]/.match memory_usage
 
-`rrdtool update #{cpu_rrd_file} N:#{us&.[](:percent) || 'U'}:#{sy&.[](:percent) || 'U'}:#{wa&.[](:percent) || 'U'}` if us || sy || wa
+update_rrd(
+  cpu_rrd_file,
+  us&.[](:percent),
+  sy&.[](:percent),
+  wa&.[](:percent),
+)
 
-`rrdtool update #{ram_rrd_file} N:#{m[:percent]}` if m
+update_rrd(
+  ram_rrd_file,
+  m[:percent],
+)
 
 `rrdtool graph #{IMAGES_DIR}/cpu.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:us=#{cpu_rrd_file}:us:AVERAGE DEF:sy=#{cpu_rrd_file}:sy:AVERAGE DEF:wa=#{cpu_rrd_file}:wa:AVERAGE LINE1:us#ff0000:User LINE1:sy#00ff00:System LINE1:wa#0000ff:Wait`
 
