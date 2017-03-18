@@ -38,6 +38,13 @@ def update_rrd(path, *cols)
   `rrdtool update #{path} N:#{cols.map { |col| col || 'U' }.join(':')}`
 end
 
+def graph_rrd(name, lower, upper, *args)
+  path = IMAGES_DIR, "#{name}.png"
+  start = Time.now.to_i - DURATION
+  `rrdtool graph #{path} -a PNG --start #{start} --end N --lower-limit #{lower} --upper-limit #{upper} #{args.join(' ')}`
+  chown path
+end
+
 raise 'Must run as root' unless Process.uid.zero?
 raise "Directory #{IMAGES_DIR} does not exist" unless File.directory? IMAGES_DIR
 
@@ -80,9 +87,21 @@ update_rrd(
   m[:percent],
 )
 
-`rrdtool graph #{IMAGES_DIR}/cpu.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:us=#{cpu_rrd_file}:us:AVERAGE DEF:sy=#{cpu_rrd_file}:sy:AVERAGE DEF:wa=#{cpu_rrd_file}:wa:AVERAGE LINE1:us#ff0000:User LINE1:sy#00ff00:System LINE1:wa#0000ff:Wait`
+graph_rrd(
+  'cpu',
+  0,
+  100,
+  'DEF:us=#{cpu_rrd_file}:us:AVERAGE',
+  'DEF:sy=#{cpu_rrd_file}:sy:AVERAGE',
+  'DEF:wa=#{cpu_rrd_file}:wa:AVERAGE',
+  'LINE1:us#ff0000:User',
+  'LINE1:sy#00ff00:System LINE1:wa#0000ff:Wait',
+)
 
-`rrdtool graph #{IMAGES_DIR}/ram.png -a PNG --start #{Time.now.to_i - DURATION} --end N --lower-limit 0 --upper-limit 100 DEF:ram=#{ram_rrd_file}:ram:AVERAGE LINE1:ram#ff0000:RAM`
-
-chown "#{IMAGES_DIR}/cpu.png"
-chown "#{IMAGES_DIR}/ram.png"
+graph_rrd(
+  'ram',
+  0,
+  100,
+  'DEF:ram=#{ram_rrd_file}:ram:AVERAGE',
+  'LINE1:ram#ff0000:RAM',
+)
