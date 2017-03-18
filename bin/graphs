@@ -92,9 +92,9 @@ graph_rrd(
   'CPU usage',
   0,
   100,
-  'DEF:us=#{cpu_rrd_file}:us:AVERAGE',
-  'DEF:sy=#{cpu_rrd_file}:sy:AVERAGE',
-  'DEF:wa=#{cpu_rrd_file}:wa:AVERAGE',
+  "DEF:us=#{cpu_rrd_file}:us:AVERAGE",
+  "DEF:sy=#{cpu_rrd_file}:sy:AVERAGE",
+  "DEF:wa=#{cpu_rrd_file}:wa:AVERAGE",
   'LINE1:us#ff0000:User',
   'LINE1:sy#00ff00:System LINE1:wa#0000ff:Wait',
 )
@@ -104,6 +104,6 @@ graph_rrd(
   'Memory usage',
   0,
   100,
-  'DEF:ram=#{ram_rrd_file}:ram:AVERAGE',
+  "DEF:ram=#{ram_rrd_file}:ram:AVERAGE",
   'LINE1:ram#ff0000:RAM',
 )
