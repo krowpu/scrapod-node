@@ -24,7 +24,7 @@ def chown(path)
   f = File.new path
   f.chown UID, GID
   f.chmod 0o644 # -rw-r--r--
-rescue Errno::ENOENT => e # rubocop:disable Lint/HandleExceptions
+rescue Errno::ENOENT => e
   p e
 end
 
