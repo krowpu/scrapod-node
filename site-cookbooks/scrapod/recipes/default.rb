@@ -8,6 +8,8 @@ package 'gstreamer1.0-plugins-base'
 package 'gstreamer1.0-tools'
 package 'gstreamer1.0-x'
 
+package 'redis-server'
+
 package 'rrdtool'
 
 include_recipe 'scrapod::directories'
