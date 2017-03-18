@@ -24,7 +24,8 @@ def chown(path)
   f = File.new path
   f.chown UID, GID
   f.chmod 0o644 # -rw-r--r--
-rescue Errno::ENOENT # rubocop:disable Lint/HandleExceptions
+rescue Errno::ENOENT => e # rubocop:disable Lint/HandleExceptions
+  p e
 end
 
 raise 'Must run as root' unless Process.uid.zero?
