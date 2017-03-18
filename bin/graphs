@@ -28,22 +28,31 @@ rescue Errno::ENOENT => e # rubocop:disable Lint/HandleExceptions
   p e
 end
 
+def create_rrd(path, *args)
+  return if File.exist? path
+  `rrdtool create #{path} --start N --step 300 #{args.join(' ')}`
+  chown path
+end
+
 raise 'Must run as root' unless Process.uid.zero?
 raise "Directory #{IMAGES_DIR} does not exist" unless File.directory? IMAGES_DIR
 
 cpu_rrd_file = File.join RRDS_DIR, 'cpu.rrd'
-
-unless File.exist? cpu_rrd_file
-  `rrdtool create #{cpu_rrd_file} --start N --step 300 DS:us:GAUGE:600:0:100 DS:sy:GAUGE:600:0:100 DS:wa:GAUGE:600:0:100 RRA:AVERAGE:0.5:1:576`
-  chown cpu_rrd_file
-end
-
 ram_rrd_file = File.join RRDS_DIR, 'ram.rrd'
 
-unless File.exist? ram_rrd_file
-  `rrdtool create #{ram_rrd_file} --start N --step 300 DS:ram:GAUGE:600:0:100 RRA:AVERAGE:0.5:1:576`
-  chown ram_rrd_file
-end
+create_rrd(
+  cpu_rrd_file,
+  'DS:us:GAUGE:600:0:100',
+  'DS:sy:GAUGE:600:0:100',
+  'DS:wa:GAUGE:600:0:100',
+  'RRA:AVERAGE:0.5:1:576',
+)
+
+create_rrd(
+  ram_rrd_file,
+  'DS:ram:GAUGE:600:0:100',
+  'RRA:AVERAGE:0.5:1:576',
+)
 
 system = Scrapod::Monit::Status::System.new 'scrapod'
 
