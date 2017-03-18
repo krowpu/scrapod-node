@@ -19,7 +19,7 @@ gem 'sinatra-contrib', '>= 2.0.0.rc1', '< 3.0'
 gem 'redis'
 
 # Long-living Capybara Webkit process for web scraping.
-gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
+gem 'capybara-webkit-daemon', krowpu: 'scrapod-server'
 
 group :development do
   # A make-like build utility for Ruby.
