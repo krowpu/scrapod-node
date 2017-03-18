@@ -15,6 +15,9 @@ gem 'sinatra', '>= 2.0.0.rc1', '< 3.0'
 # Collection of useful Sinatra extensions.
 gem 'sinatra-contrib', '>= 2.0.0.rc1', '< 3.0'
 
+# A Ruby client library for Redis.
+gem 'redis'
+
 # Long-living Capybara Webkit process for web scraping.
 gem 'capybara-webkit-daemon', krowpu: 'capybara-webkit-daemon'
 
