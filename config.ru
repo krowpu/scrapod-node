@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
-require_relative 'web'
+# This file is used by Rack-based servers to start the application.
 
-run Sinatra::Application
+require_relative 'web'
+require 'scrapod/monitor'
+
+map '/' do
+  run Sinatra::Application
+end
+
+map '/monitor' do
+  run Scrapod::Monitor
+end

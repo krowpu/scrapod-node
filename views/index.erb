@@ -1,21 +1,2 @@
 <img src="/graphs/cpu.png" alt="CPU"/>
 <img src="/graphs/ram.png" alt="RAM"/>
-
-<h2>Active sessions</h2>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Started at</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% sessions.each do |session| %>
-      <tr>
-        <td><%= session[:id] %></td>
-        <td><%= session[:started_at] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
