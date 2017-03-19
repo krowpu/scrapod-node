@@ -1,6 +1,3 @@
-include_recipe 'deploy'
-include_recipe 'redis'
-
 include_recipe 'dist-update'
 
 package 'qt5-default'
@@ -11,10 +8,15 @@ package 'gstreamer1.0-x'
 
 package 'rrdtool'
 
-include_recipe 'scrapod::directories'
-
 include_recipe 'scrapod::service_web'
 include_recipe 'scrapod::service_capybara'
+
+directory '/deploy/shared/tmp/graphs' do
+  path File.join node['deploy']['to'], 'shared/tmp/graphs'
+  owner node['deploy']['user']
+  group node['deploy']['group']
+  mode '0755' # drwxr-xr-x
+end
 
 cron 'graphs' do
   command '/usr/bin/bundle exec /srv/scrapod/current/bin/graphs >>/srv/scrapod/shared/log/graphs.log 2>&1'

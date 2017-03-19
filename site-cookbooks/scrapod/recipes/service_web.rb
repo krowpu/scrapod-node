@@ -1,4 +1,4 @@
-include_recipe 'scrapod::directories'
+include_recipe 'deploy'
 include_recipe 'scrapod::nginx_web'
 
 template 'web.service' do

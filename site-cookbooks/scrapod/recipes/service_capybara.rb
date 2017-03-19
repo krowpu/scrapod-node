@@ -1,4 +1,5 @@
-include_recipe 'scrapod::directories'
+include_recipe 'deploy'
+include_recipe 'redis'
 
 include_recipe 'xvfb'
 
