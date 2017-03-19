@@ -1,5 +1,7 @@
 include_recipe 'scrapod::directories'
 
+include_recipe 'xvfb'
+
 template 'capybara.service' do
   path '/etc/systemd/system/scrapod-capybara.service'
   source 'capybara.service.erb'

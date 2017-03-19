@@ -3,7 +3,6 @@
     "ipaddress": "0.0.0.0"
   },
   "run_list": [
-    "recipe[xvfb]",
     "recipe[scrapod]"
   ],
   "deploy": {
