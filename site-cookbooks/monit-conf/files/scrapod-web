@@ -1,1 +1,0 @@
-check process scrapod-web with pidfile /srv/scrapod/shared/tmp/pids/puma.pid
