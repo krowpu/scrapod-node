@@ -6,6 +6,9 @@ git_source :krowpu do |repo_name|
   "https://github.com/krowpu/#{repo_name}.git"
 end
 
+# A make-like build utility for Ruby.
+gem 'rake', require: false
+
 # A ruby web server built for concurrency.
 gem 'puma'
 
@@ -22,9 +25,6 @@ gem 'redis'
 gem 'capybara-webkit-daemon', krowpu: 'scrapod-server'
 
 group :development do
-  # A make-like build utility for Ruby.
-  gem 'rake', require: false
-
   # Automatic Ruby code style checking tool.
   # Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop', require: false
