@@ -8,6 +8,9 @@ DEPENDENCIES
   nginx
     git: https://github.com/krowpu/chef-nginx.git
     revision: 198f83d368cb4fa6e0ae5c239bd703fe72547fb2
+  redis
+    git: https://github.com/krowpu/chef-redis.git
+    revision: b9d496bb72beed4311d70bff1fd51521feb0a1ce
   xvfb
     git: https://github.com/krowpu/chef-xvfb.git
     revision: d8a562ec5b3ddf4df3ea6db1b53c82f5c1b39a3e
@@ -17,5 +20,7 @@ GRAPH
     dist-update (>= 0.0.0)
   dist-update (0.0.0)
   nginx (0.0.0)
+    dist-update (>= 0.0.0)
+  redis (0.0.0)
     dist-update (>= 0.0.0)
   xvfb (3.0.0)
