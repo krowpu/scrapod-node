@@ -1,4 +1,7 @@
 DEPENDENCIES
+  deploy
+    git: https://github.com/krowpu/chef-deploy.git
+    revision: 6c1a8ed48996689adc86d7dd18ee5aeebc1b8c52
   dist-update
     git: https://github.com/krowpu/chef-dist-update.git
     revision: e1a4c2f03661ea463e9b62e1473f1d3891fda43d
@@ -10,6 +13,7 @@ DEPENDENCIES
     revision: d8a562ec5b3ddf4df3ea6db1b53c82f5c1b39a3e
 
 GRAPH
+  deploy (0.0.0)
   dist-update (0.0.0)
   nginx (0.0.0)
     dist-update (>= 0.0.0)
