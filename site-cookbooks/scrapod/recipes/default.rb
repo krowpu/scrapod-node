@@ -1,4 +1,4 @@
-include_recipe 'ruby-bundler'
+include_recipe 'deploy'
 include_recipe 'redis'
 
 include_recipe 'dist-update'
