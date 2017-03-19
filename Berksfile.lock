@@ -5,6 +5,9 @@ DEPENDENCIES
   dist-update
     git: https://github.com/krowpu/chef-dist-update.git
     revision: b6c2230082d1caa75f237e301cba136b000b2ca3
+  monit
+    git: https://github.com/krowpu/chef-monit.git
+    revision: fb268b334caa762928226fdc1e83338af7fa372f
   nginx
     git: https://github.com/krowpu/chef-nginx.git
     revision: 198f83d368cb4fa6e0ae5c239bd703fe72547fb2
@@ -19,6 +22,9 @@ GRAPH
   deploy (0.0.0)
     dist-update (>= 0.0.0)
   dist-update (0.0.0)
+  monit (0.0.0)
+    dist-update (>= 0.0.0)
+    nginx (>= 0.0.0)
   nginx (0.0.0)
     dist-update (>= 0.0.0)
   redis (0.0.0)

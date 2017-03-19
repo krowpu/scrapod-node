@@ -1,5 +1,5 @@
 include_recipe 'nginx'
-include_recipe 'monit'
+include_recipe 'monit-conf'
 
 cookbook_file '/etc/nginx/sites-available/web' do
   source 'nginx_web.conf'
