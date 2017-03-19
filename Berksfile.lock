@@ -2,10 +2,15 @@ DEPENDENCIES
   dist-update
     git: https://github.com/krowpu/chef-dist-update.git
     revision: e1a4c2f03661ea463e9b62e1473f1d3891fda43d
+  nginx
+    git: https://github.com/krowpu/chef-nginx.git
+    revision: be140fa738408bba97c61c20c3e56a88c0702b71
   xvfb
     git: https://github.com/krowpu/chef-xvfb.git
     revision: d8a562ec5b3ddf4df3ea6db1b53c82f5c1b39a3e
 
 GRAPH
   dist-update (0.0.0)
+  nginx (0.0.0)
+    dist-update (>= 0.0.0)
   xvfb (3.0.0)
