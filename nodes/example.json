@@ -6,6 +6,9 @@
     "recipe[xvfb]",
     "recipe[scrapod]"
   ],
+  "deploy": {
+    "to": "/srv/scrapod"
+  },
   "xvfb": {
     "user": "xvfb",
     "display": ":1",
