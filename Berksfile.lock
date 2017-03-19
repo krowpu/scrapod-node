@@ -7,7 +7,7 @@ DEPENDENCIES
     revision: b6c2230082d1caa75f237e301cba136b000b2ca3
   nginx
     git: https://github.com/krowpu/chef-nginx.git
-    revision: be140fa738408bba97c61c20c3e56a88c0702b71
+    revision: 198f83d368cb4fa6e0ae5c239bd703fe72547fb2
   xvfb
     git: https://github.com/krowpu/chef-xvfb.git
     revision: d8a562ec5b3ddf4df3ea6db1b53c82f5c1b39a3e
