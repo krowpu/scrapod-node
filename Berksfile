@@ -2,4 +2,5 @@
 
 source 'https://api.berkshelf.com'
 
-cookbook 'xvfb', github: 'krowpu/chef-xvfb'
+cookbook 'dist-update', github: 'krowpu/chef-dist-update'
+cookbook 'xvfb',        github: 'krowpu/chef-xvfb'
