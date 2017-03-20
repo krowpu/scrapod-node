@@ -1,9 +1,9 @@
 include_recipe 'deploy'
-include_recipe 'scrapod::nginx_web'
+include_recipe 'scrapod::nginx_monitor'
 
-template 'web.service' do
-  path '/etc/systemd/system/scrapod-web.service'
-  source 'web.service.erb'
+template 'monitor.service' do
+  path '/etc/systemd/system/scrapod-monitor.service'
+  source 'monitor.service.erb'
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
@@ -16,5 +16,5 @@ end
 
 execute 'systemctl daemon-reload' do
   action :nothing
-  subscribes :run, 'template[web.service]'
+  subscribes :run, 'template[monitor.service]'
 end
