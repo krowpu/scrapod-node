@@ -9,7 +9,7 @@ package 'gstreamer1.0-x'
 package 'rrdtool'
 
 include_recipe 'scrapod::service_web'
-include_recipe 'scrapod::service_capybara'
+include_recipe 'scrapod::service_server'
 
 directory '/deploy/shared/tmp/graphs' do
   path File.join node['deploy']['to'], 'shared/tmp/graphs'

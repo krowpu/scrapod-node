@@ -3,9 +3,9 @@ include_recipe 'redis'
 
 include_recipe 'xvfb'
 
-template 'capybara.service' do
-  path '/etc/systemd/system/scrapod-capybara.service'
-  source 'capybara.service.erb'
+template 'server.service' do
+  path '/etc/systemd/system/scrapod-server.service'
+  source 'server.service.erb'
   owner 'root'
   group 'root'
   mode '0644' # -rw-r--r--
@@ -19,5 +19,5 @@ end
 
 execute 'systemctl daemon-reload' do
   action :nothing
-  subscribes :run, 'template[capybara.service]'
+  subscribes :run, 'template[server.service]'
 end

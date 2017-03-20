@@ -17,9 +17,9 @@
   "monit": {
     "system_name": "example",
     "processes": [
-      { "name": "redis-server",     "pidfile": "/var/run/redis/redis-server.pid"                 },
-      { "name": "scrapod-capybara", "pidfile": "/srv/scrapod/shared/tmp/pids/scrapod-server.pid" },
-      { "name": "scrapod-web",      "pidfile": "/srv/scrapod/shared/tmp/pids/puma.pid"           }
+      { "name": "redis-server",   "pidfile": "/var/run/redis/redis-server.pid"                 },
+      { "name": "scrapod-server", "pidfile": "/srv/scrapod/shared/tmp/pids/scrapod-server.pid" },
+      { "name": "scrapod-web",    "pidfile": "/srv/scrapod/shared/tmp/pids/puma.pid"           }
     ]
   }
 }

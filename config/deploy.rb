@@ -40,5 +40,5 @@ append :linked_dirs, 'public/graphs', 'log', 'tmp/pids'
 after :deploy, 'puma:enable'
 after :deploy, 'puma:restart'
 
-after :deploy, 'capybara:enable'
-after :deploy, 'capybara:restart'
+after :deploy, 'scrapod_server:enable'
+after :deploy, 'scrapod_server:restart'
