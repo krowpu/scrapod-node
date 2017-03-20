@@ -298,7 +298,6 @@ DEPENDENCIES
   rubocop
   scrapod-monitor!
   scrapod-server!
-  sinatra (>= 2.0.0.rc1, < 3.0)
 
 BUNDLED WITH
    1.14.6
