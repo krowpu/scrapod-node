@@ -8,9 +8,9 @@ GIT
 
 GIT
   remote: https://github.com/krowpu/scrapod-server.git
-  revision: 66cb256f0edb124a94482d61583018c4ce7b5797
+  revision: 3db7c821d5f3bb0a60c534f471b756396d759836
   specs:
-    capybara-webkit-daemon (0.0.0)
+    scrapod-server (0.0.0)
       capybara (= 2.4.4)
       capybara-webkit (= 1.11.1)
       redis (>= 4.0.0.rc1, <= 5.0)
@@ -167,7 +167,7 @@ GEM
       net-ssh-gateway (>= 1.2.0)
     net-telnet (0.1.1)
     nio4r (2.0.0)
-    nokogiri (1.7.0.1)
+    nokogiri (1.7.1)
       mini_portile2 (~> 2.1.0)
     octokit (4.6.2)
       sawyer (~> 0.8.0, >= 0.5.3)
@@ -292,12 +292,12 @@ DEPENDENCIES
   capistrano
   capistrano-bundler
   capistrano-shell
-  capybara-webkit-daemon!
   knife-solo
   puma
   rake
   rubocop
   scrapod-monitor!
+  scrapod-server!
   sinatra (>= 2.0.0.rc1, < 3.0)
 
 BUNDLED WITH

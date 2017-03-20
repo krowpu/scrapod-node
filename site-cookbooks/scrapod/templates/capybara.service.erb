@@ -1,7 +1,7 @@
 <% bundle = '/usr/bin/bundle exec --keep-file-descriptors' %>
 
 [Unit]
-Description=Capybara Webkit daemon
+Description=Scrapod server
 After=network.target
 Requires=xvfb.service
 
@@ -12,13 +12,13 @@ User=<%= @user %>
 Group=<%= @group %>
 
 WorkingDirectory=/srv/scrapod/current/
-PIDFile=/srv/scrapod/shared/tmp/pids/capybara.pid
+PIDFile=/srv/scrapod/shared/tmp/pids/scrapod-server.pid
 Environment=BUNDLE_GEMFILE=/srv/scrapod/current/Gemfile
 
 <% if @display.nil? %>
-ExecStart=<%= bundle %> capybara-webkit-daemon --config /srv/scrapod/current/config/capybara_webkit_daemon/production.rb
+ExecStart=<%= bundle %> scrapod-server --config /srv/scrapod/current/config/scrapod-server/production.rb
 <% else %>
-ExecStart=<%= bundle %> capybara-webkit-daemon --config /srv/scrapod/current/config/capybara_webkit_daemon/production.rb --display <%= @display %>
+ExecStart=<%= bundle %> scrapod-server --config /srv/scrapod/current/config/scrapod-server/production.rb --display <%= @display %>
 <% end %>
 
 [Install]

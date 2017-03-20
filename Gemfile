@@ -17,7 +17,7 @@ gem 'puma'
 gem 'sinatra', '>= 2.0.0.rc1', '< 3.0'
 
 # Long-living Capybara Webkit process for web scraping.
-gem 'capybara-webkit-daemon', krowpu: 'scrapod-server'
+gem 'scrapod-server', krowpu: 'scrapod-server'
 
 # Scrapod monitoring dashboard Rack application.
 gem 'scrapod-monitor', krowpu: 'scrapod-monitor'
