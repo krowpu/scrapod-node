@@ -1,19 +1,26 @@
 GIT
   remote: https://github.com/krowpu/scrapod-monitor.git
-  revision: 5701bba6bf5140008cc844c766e5b7446f619b3c
+  revision: ee5dc615c2fd64b186adc6c6f4a203f557fbbddd
   specs:
     scrapod-monitor (0.0.0)
-      redis (>= 4.0.0.rc1, < 5.0)
+      scrapod-redis
       sinatra (>= 2.0.0.rc1, < 3.0)
 
 GIT
+  remote: https://github.com/krowpu/scrapod-redis.git
+  revision: 32ff79050a7102a9986b80d94b11fbb408f65397
+  specs:
+    scrapod-redis (0.0.0)
+      redis (>= 4.0.0.rc1, < 5.0)
+
+GIT
   remote: https://github.com/krowpu/scrapod-server.git
-  revision: 61fabc98a6e4cc4201a143ca035b9a2a9b061d4a
+  revision: 2fb4e3a10556482714d2daaa057229405d08be9d
   specs:
     scrapod-server (0.0.0)
       capybara (= 2.4.4)
       capybara-webkit (= 1.11.1)
-      redis (>= 4.0.0.rc1, <= 5.0)
+      scrapod-redis
 
 GEM
   remote: https://rubygems.org/
@@ -297,6 +304,7 @@ DEPENDENCIES
   rake
   rubocop
   scrapod-monitor!
+  scrapod-redis!
   scrapod-server!
 
 BUNDLED WITH

@@ -18,6 +18,9 @@ gem 'scrapod-server', krowpu: 'scrapod-server'
 # Scrapod monitoring dashboard Rack application.
 gem 'scrapod-monitor', krowpu: 'scrapod-monitor'
 
+# Scrapod data records in Redis.
+gem 'scrapod-redis', krowpu: 'scrapod-redis'
+
 group :development do
   # Automatic Ruby code style checking tool.
   # Aims to enforce the community-driven Ruby Style Guide.
