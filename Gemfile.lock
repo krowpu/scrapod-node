@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/krowpu/scrapod-monitor.git
-  revision: ee5dc615c2fd64b186adc6c6f4a203f557fbbddd
+  revision: 3e0ddf5f7686b51236436daaba2155643563b4ec
   specs:
     scrapod-monitor (0.0.0)
       scrapod-redis
@@ -8,14 +8,14 @@ GIT
 
 GIT
   remote: https://github.com/krowpu/scrapod-redis.git
-  revision: 32ff79050a7102a9986b80d94b11fbb408f65397
+  revision: 6a647f3b3c294f26f77850ceab16b95c55c1067a
   specs:
     scrapod-redis (0.0.0)
       redis (>= 4.0.0.rc1, < 5.0)
 
 GIT
   remote: https://github.com/krowpu/scrapod-server.git
-  revision: 2fb4e3a10556482714d2daaa057229405d08be9d
+  revision: 0b0da69f153137259b03668b36bef1851e99538d
   specs:
     scrapod-server (0.0.0)
       capybara (= 2.4.4)
